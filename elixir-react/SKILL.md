@@ -12,21 +12,25 @@ metadata:
 
 # General 
 
-1. **Bug Prevention:** Avoid introducing regressions while modifying the codebase, especially subtle or hard-to-detect bugs. Ensure features are properly tested before completion.
+1. **Comments:** * Only add if really needed and always keep them short, concise and right to the point, don't be verbose.
 
-2. **Security:** Always prioritize system security. Never expose credentials, weaken protections, or introduce vulnerabilities that could compromise the platform.
+2. **Bug Prevention:** Avoid introducing regressions while modifying the codebase, especially subtle or hard-to-detect bugs. Ensure features are properly tested before completion.
 
-3. **Debuggability:** Add structured debug logs tagged with the feature name and metadata covering important control flows, edge cases, and failure scenarios to simplify troubleshooting and observability.
+3. **Security:** Always prioritize system security. Never expose credentials, weaken protections, or introduce vulnerabilities that could compromise the platform.
 
-4. **Divide and Conquer:** Break the work into incremental steps and implement one module at a time. Request human review after each major step before proceeding. Maintain clear tracking of pending tasks and continue iterating until the full implementation is complete without leaving unfinished work behind.
+4. **Debuggability:** Add structured debug logs tagged with the feature name and metadata covering important control flows, edge cases, and failure scenarios to simplify troubleshooting and observability.
+
+5. **Divide and Conquer:** Break the work into incremental steps and implement one module at a time. Request human review after each major step before proceeding. Maintain clear tracking of pending tasks and continue iterating until the full implementation is complete without leaving unfinished work behind.
 
 # Elixir / Phoenix / Absinthe (GraphQL)
 
 ## General Guidelines:
 
+* Always try to use standard mix generators instead of manually generating files mainly for database migration files. 
+
 * Always run `mix format` at the end of each implementation to ensure the codebase remains consistently formatted.
 
-* Always run `MIX_ENV=test mix test` before completion. If the test environment is corrupted or inconsistent, try:
+* Always run `MIX_ENV=test mix test` at the end. If the test environment is corrupted or inconsistent, try:
   `MIX_ENV=test mix ecto.drop && MIX_ENV=test mix ecto.setup`
 
 1. **Imports / Requires / Aliases:** Keep all `import`, `require`, and `alias` statements at the top of the file for consistency and readability.
